@@ -1,4 +1,5 @@
 import os
+import matplotlib.pyplot as plt
 
 # ---INPUT PARAMETERS---
 # change the "import -->name<-- as" to the strategies you want
@@ -8,7 +9,7 @@ from strategies import exampleStrategy as strategy2
 # capital and round count can be changed
 STARTING_CAPITAL = 1000
 ROUNDS = 100
-
+plot = True
 
 # init
 strategy_capital = [STARTING_CAPITAL, STARTING_CAPITAL]
@@ -71,3 +72,24 @@ print("\n_____________________________________________________\n-Results-\n")
 print(f"{strategy1_name} won {strategy_score[0]} times and {strategy_points[0]} points!")
 print(f"{strategy2_name} won {strategy_score[1]} times and {strategy_points[1]} points!")
 print("_____________________________________________________\n")
+
+def plot_results(ROUNDS, capital_history, strategy1_name, strategy2_name):
+    rounds = list(range(1, ROUNDS + 1))
+    plt.figure(figsize=(10, 6))
+
+# Plotting Player 1's capital over rounds
+    plt.plot(rounds, [capital[0] for capital in capital_history], label=f"{strategy1_name}'s Capital", marker='o')
+
+# Plotting Player 2's capital over rounds
+    plt.plot(rounds, [capital[1] for capital in capital_history], label=f"{strategy2_name}'s Capital", marker='o')
+
+    plt.title('Capital Over Rounds')
+    plt.xlabel('Rounds')
+    plt.ylabel('Capital')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
+if plot:
+    # Plotting the results
+    plot_results(ROUNDS, capital_history, strategy1_name, strategy2_name)
