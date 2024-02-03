@@ -12,6 +12,7 @@ ROUNDS = 100
 
 # init
 strategy_capital = [STARTING_CAPITAL, STARTING_CAPITAL]
+capital_history = []
 strategy_points = [0, 0]
 strategy_score = [0, 0]
 strategy1_name = os.path.splitext(os.path.basename(strategy1.__file__))[0]
@@ -21,6 +22,7 @@ strategy2_name = os.path.splitext(os.path.basename(strategy2.__file__))[0]
 print("-----------------------------------------------------\nStarting program\n-----------------------------------------------------")
 for round in range(ROUNDS):
     print(f"Round: {round + 1}\n-----------------------------------------------------")
+    capital_history.append((strategy_capital[0],strategy_capital[1]))
 
     # define the raise in score upon win
     points = 1
@@ -28,8 +30,8 @@ for round in range(ROUNDS):
     print(f"Points to win: {points}")
     print(f"Capitals:\n    {strategy1_name}: {strategy_capital[0]}\n    {strategy2_name}: {strategy_capital[1]}")
     
-    strategy_investment1 = abs(strategy1.get_investment(strategy_capital, 0, round))
-    strategy_investment2 = abs(strategy2.get_investment(strategy_capital, 1, round))
+    strategy_investment1 = abs(strategy1.get_investment(capital_history, 0, round))
+    strategy_investment2 = abs(strategy2.get_investment(capital_history, 1, round))
     if strategy_capital[0] - strategy_investment1 < 0:
         strategy_investment1 = 0
     if strategy_capital[1] - strategy_investment2 < 0:
