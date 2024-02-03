@@ -1,6 +1,6 @@
 import os
 
-# input parameters
+# ---INPUT PARAMETERS---
 # change the "import -->name<-- as" to the strategies you want
 from strategies import greaterThanYou as strategy1
 from strategies import exampleStrategy as strategy2
@@ -71,5 +71,3 @@ print("\n_____________________________________________________\n-Results-\n")
 print(f"{strategy1_name} won {strategy_score[0]} times and {strategy_points[0]} points!")
 print(f"{strategy2_name} won {strategy_score[1]} times and {strategy_points[1]} points!")
 print("_____________________________________________________\n")
-
- 
