@@ -4,11 +4,11 @@ import matplotlib.pyplot as plt
 # ---INPUT PARAMETERS---
 # change the "import -->name<-- as" to the strategies you want
 from strategies import greaterThanYou as strategy1
-from strategies import exampleStrategy as strategy2
+from strategies import AlwaysAhead as strategy2
 
 # capital and round count can be changed
 STARTING_CAPITAL = 1000
-ROUNDS = 100
+ROUNDS = 10
 plot = True
 
 # init
